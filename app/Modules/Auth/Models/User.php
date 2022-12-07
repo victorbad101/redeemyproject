@@ -23,7 +23,7 @@ class User extends Authenticatable
         $email = $data->email;
         $password = Hash::make($data->password);
 
-        
+
     }
 
     public function vinyl(): HasMany

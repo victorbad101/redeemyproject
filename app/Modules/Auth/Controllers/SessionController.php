@@ -14,7 +14,7 @@ use Illuminate\View\View;
 class SessionController extends Controller
 {
     public function __construct(
-        protected UserRegisterService $registerService,
+        private UserRegisterService $registerService,
     ) {
     }
 

@@ -14,7 +14,7 @@ use Illuminate\View\View;
 class LogInController extends Controller
 {
     public function __construct(
-        protected UserLoginService $loginService,
+        private UserLoginService $loginService,
     ) {
     }
 
@@ -26,7 +26,7 @@ class LogInController extends Controller
     public function store(User $user, SessionData $data)
     {
         try {
-
+            $this->loginService->login();
         } catch (ValidationException $exception) {
             echo $exception->getMessage();
         }
