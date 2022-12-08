@@ -3,7 +3,7 @@
 namespace App\Modules\Auth\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Modules\Auth\Data\SessionData;
+use App\Modules\Auth\Data\UserData;
 use App\Modules\Redeemy\Models\Vinyl;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -18,12 +18,21 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
 
-    public static function register(SessionData $data)
+    /**
+     * @param UserData $data
+     * @return static
+     */
+    public static function register(UserData $data): static
     {
-        $email = $data->email;
-        $password = Hash::make($data->password);
+        $user = new User();
 
+        $user->name = $data->name;
+        $user->email = $data->email;
+        $user->password = Hash::make($data->password);
 
+        $user->save();
+
+        return $user;
     }
 
     public function vinyl(): HasMany

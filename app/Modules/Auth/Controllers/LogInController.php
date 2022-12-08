@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Modules\Auth\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Auth\Data\SessionData;
+use App\Modules\Auth\Data\UserData;
 use App\Modules\Auth\Models\User;
 use App\Modules\Auth\Services\UserLoginService;
 use Illuminate\Validation\ValidationException;
@@ -23,7 +23,7 @@ class LogInController extends Controller
         return View('login.create');
     }
 
-    public function store(User $user, SessionData $data)
+    public function store(User $user, UserData $data)
     {
         try {
             $this->loginService->login();

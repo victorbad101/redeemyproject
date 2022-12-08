@@ -6,7 +6,7 @@ namespace App\Modules\Auth\Data;
 
 use Spatie\LaravelData\Data;
 
-class SessionData extends Data
+class UserData extends Data
 {
     public function __construct(
         public string $name,
