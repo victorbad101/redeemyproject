@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Auth\Data;
 
+use App\Modules\Auth\Requests\UserRequest;
 use Spatie\LaravelData\Data;
 
 class UserData extends Data
@@ -15,12 +16,12 @@ class UserData extends Data
     ) {
     }
 
-    public static function rules(): array
+    public static function fromRequest(UserRequest $request): static
     {
-        return [
-            'name'  => ['required'],
-            'email' => ['required', 'email:rfc,dns'],
-            'password' => ['required']
-        ];
+        return new self(
+            $request->name,
+            $request->email,
+            $request->password
+        );
     }
 }
