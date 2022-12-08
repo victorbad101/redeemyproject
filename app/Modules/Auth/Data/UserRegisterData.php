@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Modules\Auth\Data;
 
-use App\Modules\Auth\Requests\UserRequest;
+use App\Modules\Auth\Requests\UserRegisterRequest;
 use Spatie\LaravelData\Data;
 
-class UserData extends Data
+class UserRegisterData extends Data
 {
     public function __construct(
         public string $name,
@@ -16,7 +16,7 @@ class UserData extends Data
     ) {
     }
 
-    public static function fromRequest(UserRequest $request): static
+    public static function fromRequest(UserRegisterRequest $request): static
     {
         return new self(
             $request->name,
