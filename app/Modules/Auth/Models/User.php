@@ -3,7 +3,7 @@
 namespace App\Modules\Auth\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Modules\Auth\Data\UserData;
+use App\Modules\Auth\Data\UserRegisterData;
 use App\Modules\Redeemy\Models\Vinyl;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -19,10 +19,10 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * @param UserData $data
+     * @param UserRegisterData $data
      * @return static
      */
-    public static function register(UserData $data): static
+    public static function register(UserRegisterData $data): static
     {
         $user = new User();
 

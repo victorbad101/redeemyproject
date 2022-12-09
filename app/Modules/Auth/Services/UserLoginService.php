@@ -5,11 +5,18 @@ namespace App\Modules\Auth\Services;
 
 use App\Modules\Auth\Data\UserLoginData;
 use App\Modules\Auth\Requests\UserLoginRequest;
+use Illuminate\Validation\ValidationException;
 
 class UserLoginService
 {
-    public function login(UserLoginData $data, UserLoginRequest $request)
+    public function login(UserLoginData $data, UserLoginRequest $request): void
     {
-        $collection = $data::fromRequest($request);
+        $collection = $data::fromRequest($request)->toArray();
+
+        if (! auth()->attempt($collection)) {
+            throw ValidationException::withMessages(['Your provided credentials could not be verified']);
+        }
+
+        session()->regenerate();
     }
 }

@@ -15,8 +15,8 @@ class UserLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'unique:user', 'email:rcf:dns'],
-            'password' => ['required', 'password']
+            'email' => ['required', 'email:rcf:dns'],
+            'password' => ['required']
         ];
     }
 }
