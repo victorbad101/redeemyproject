@@ -35,4 +35,11 @@ class LogInController extends Controller
 
         return redirect('/dashboard');
     }
+
+    public function destroy(): RedirectResponse
+    {
+        auth()->logout();
+
+        return redirect('/dashboard');
+    }
 }

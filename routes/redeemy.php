@@ -8,8 +8,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', [VinylController::class, 'index']);
 
-Route::get('/create', [UserController::class, 'create']);
-Route::post('/user/create', [UserController::class, 'store'])->name('user.store');
+Route::get('/create', [UserController::class, 'create'])->name('user.register.create');
+Route::post('/user/create', [UserController::class, 'store'])->name('user.register.store');
 
-Route::get('/login', [LogInController::class, 'create']);
-Route::post('/login', [LogInController::class, 'store'])->name('user.login');
+Route::get('/login', [LogInController::class, 'create'])->name('user.login.create');
+Route::post('/login', [LogInController::class, 'store'])->name('user.login.store');
+Route::delete('/logout', [LogInController::class, 'destroy'])->name('user.logout');
+
+Route::get('/vinyl/create', [VinylController::class, 'create']);
+Route::post('/vinyl/create', [VinylController::class, 'store'])->name('vinyl.store');

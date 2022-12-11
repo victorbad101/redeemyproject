@@ -1,5 +1,5 @@
 <x-app>
-    <form action="{{ route('user.store') }}" method="post">
+    <form action="{{ route('user.register.store') }}" method="post">
         @csrf
         <p>Name</p><input name="name" type="text">
         <p>Email</p><input name="email" type="email">
