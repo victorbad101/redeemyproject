@@ -29,6 +29,7 @@ class User extends Authenticatable
         $user->name = $data->name;
         $user->email = $data->email;
         $user->password = Hash::make($data->password);
+        $user->is_admin = $data->isAuthor;
 
         $user->save();
 
@@ -37,6 +38,6 @@ class User extends Authenticatable
 
     public function vinyl(): HasMany
     {
-        return $this->hasMany(Vinyl::class);
+        return $this->hasMany(Vinyl::class, 'user_id');
     }
 }

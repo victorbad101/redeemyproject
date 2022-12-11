@@ -12,7 +12,8 @@ class UserRegisterData extends Data
     public function __construct(
         public string $name,
         public string $email,
-        public string $password
+        public string $password,
+        public ?bool $isAuthor = false
     ) {
     }
 
@@ -21,7 +22,8 @@ class UserRegisterData extends Data
         return new self(
             $request->name,
             $request->email,
-            $request->password
+            $request->password,
+            $request->is_admin === 'true' ? true : false
         );
     }
 }

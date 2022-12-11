@@ -2,6 +2,7 @@
     @auth()
         <h2>Hello {{ auth()->user()->name }}</h2>
         <x-logout />
+
         <table>
             @foreach ($vinyls as $vinyl)
                 <tr>
@@ -10,12 +11,16 @@
                 </tr>
                 <tr>
                     <th>{{ $vinyl->name }}</th>
-                    <th>s</th>
+                    <th>{{ $vinyl->author->name }}</th>
                 </tr>
+                {{ $vinyl->author->is_admin }}
+                @if ($user->is_admin)
+                    <a href="{{ route('vinyl.create') }}">Create</a>
+                @endif
             @endforeach
         </table>
     @else
-        <a href="{{ route('user.register.create') }}">Register</a>
+        <a href="{{ route('user.register.create') }}">Register</a> <br />
         <a href="{{ route('user.login.create') }}">Log In</a>
     @endauth
 </x-app>

@@ -6,7 +6,6 @@ namespace App\Modules\Auth\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Auth\Data\UserLoginData;
-use App\Modules\Auth\Models\User;
 use App\Modules\Auth\Requests\UserLoginRequest;
 use App\Modules\Auth\Services\UserLoginService;
 use Illuminate\Http\RedirectResponse;

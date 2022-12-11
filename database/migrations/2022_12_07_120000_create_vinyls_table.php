@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('vinyls', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('users_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->string('download_code')->unique()->nullable();

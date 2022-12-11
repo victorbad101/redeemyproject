@@ -8,7 +8,7 @@ use App\Modules\Redeemy\Requests\VinylRequest;
 
 class VinylRegisterService
 {
-    public function register(Vinyl $vinyl, VinylData $data, VinylRequest $request)
+    public function register(Vinyl $vinyl, VinylData $data, VinylRequest $request): Vinyl
     {
         return $vinyl::register($data::fromRequest($request));
     }
