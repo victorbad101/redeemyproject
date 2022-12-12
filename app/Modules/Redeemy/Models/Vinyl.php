@@ -12,6 +12,10 @@ class Vinyl extends Model
 {
     use HasFactory;
 
+    /**
+     * @param VinylData $data
+     * @return Vinyl
+     */
     public static function register(VinylData $data): Vinyl
     {
         $vinyl = new Vinyl();
@@ -26,11 +30,18 @@ class Vinyl extends Model
         return $vinyl;
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    /**
+     * @param int $length
+     * @return string
+     */
     private function downloadCode(int $length): string
     {
         return substr(str_shuffle(strtoupper("qwertyuiopasdfghjklzxcvbnm1234567890")), 0, $length);

@@ -9,6 +9,12 @@ use Illuminate\Validation\ValidationException;
 
 class UserLoginService
 {
+    /**
+     * @param UserLoginData $data
+     * @param UserLoginRequest $request
+     * @return void
+     * @throws ValidationException
+     */
     public function login(UserLoginData $data, UserLoginRequest $request): void
     {
         $collection = $data::fromRequest($request)->toArray();

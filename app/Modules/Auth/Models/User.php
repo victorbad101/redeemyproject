@@ -4,16 +4,13 @@ namespace App\Modules\Auth\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Modules\Auth\Data\UserRegisterData;
-use App\Modules\Redeemy\Exceptions\AuthorException;
 use App\Modules\Redeemy\Models\Vinyl;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 use Laravel\Sanctum\HasApiTokens;
-use mysql_xdevapi\SqlStatement;
 
 class User extends Authenticatable
 {
@@ -48,7 +45,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Used In @middleware CheckIfAuthor
+     * Used In @class CheckIfAuthor
      * @return User|null
      */
     public function isAdmin(): User|null
