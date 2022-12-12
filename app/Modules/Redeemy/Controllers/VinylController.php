@@ -16,30 +16,10 @@ use Illuminate\Support\Facades\Auth;
 
 class VinylController extends Controller
 {
-    public function __construct(
-        public VinylRegisterService $registerService,
-    ) {
-    }
-
-    public function index(): View
+    public function index(Vinyl $vinyl): View
     {
         return View('vinyl.index', [
-            'user'   => Vinyl::where('user_id', auth()->id())->with('vinyl')
-                        ->first()
-                        ,
             'vinyls' => Vinyl::all(),
         ]);
-    }
-
-    public function create(): View
-    {
-        return View('vinyl.create');
-    }
-
-    public function store(Vinyl $vinyl, VinylData $data, VinylRequest $request): RedirectResponse
-    {
-        $this->registerService->register($vinyl, $data, $request);
-
-        return redirect('/dashboard');
     }
 }

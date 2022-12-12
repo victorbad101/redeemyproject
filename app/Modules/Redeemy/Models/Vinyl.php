@@ -16,9 +16,9 @@ class Vinyl extends Model
     {
         $vinyl = new Vinyl();
 
-        $vinyl->user_id = auth()->user()->id;
-        $vinyl->name = $data->name;
-        $vinyl->slug = strtolower(str_replace(' ', '-', $vinyl->name));
+        $vinyl->user_id       = auth()->user()->id;
+        $vinyl->name          = $data->name;
+        $vinyl->slug          = strtolower(str_replace(' ', '-', $vinyl->name));
         $vinyl->download_code = $vinyl->downloadCode(6);
 
         $vinyl->save();
