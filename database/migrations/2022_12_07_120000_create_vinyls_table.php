@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('download_code')->unique()->nullable();
             $table->timestamps();
+            $table->timestamp('expired_at')->nullable()->default(null);
         });
     }
 

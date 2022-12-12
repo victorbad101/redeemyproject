@@ -15,7 +15,7 @@ use Illuminate\View\View;
 class AuthorPostController extends Controller
 {
     public function __construct(
-        public VinylRegisterService $registerService,
+        private VinylRegisterService $registerService,
     ) {
     }
 

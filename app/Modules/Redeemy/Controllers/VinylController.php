@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 class VinylController extends Controller
 {
-    public function index(Vinyl $vinyl): View
+    public function index(): View
     {
         return View('vinyl.index', [
             'vinyls' => Vinyl::all(),

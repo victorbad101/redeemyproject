@@ -23,7 +23,7 @@ class Vinyl extends Model
         $vinyl->user_id       = auth()->user()->id;
         $vinyl->name          = $data->name;
         $vinyl->slug          = strtolower(str_replace(' ', '-', $vinyl->name));
-        $vinyl->download_code = $vinyl->downloadCode(6);
+        $vinyl->download_code = null;
 
         $vinyl->save();
 
@@ -38,12 +38,5 @@ class Vinyl extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    /**
-     * @param int $length
-     * @return string
-     */
-    private function downloadCode(int $length): string
-    {
-        return substr(str_shuffle(strtoupper("qwertyuiopasdfghjklzxcvbnm1234567890")), 0, $length);
-    }
+
 }

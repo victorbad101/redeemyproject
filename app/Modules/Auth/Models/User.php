@@ -57,8 +57,9 @@ class User extends Authenticatable
                 ->author()
                 ->where('is_admin', true)
                 ->first();
+        } else {
+            return User::where('id', auth()->id())->where('is_admin', true)->first();
         }
 
-        return null;
     }
 }
