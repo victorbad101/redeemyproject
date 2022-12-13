@@ -20,7 +20,7 @@ class Vinyl extends Model
      */
     public static function register(VinylData $data, VinylRequest $request): Vinyl
     {
-        $vinyl = new Vinyl();
+        $vinyl = new static();
 
         $vinyl->user_id       = auth()->user()->id;
         $vinyl->name          = $data->name;

@@ -21,7 +21,7 @@ class User extends Authenticatable
      */
     public static function register(UserRegisterData $data): static
     {
-        $user = new User();
+        $user = new static();
 
         $user->name     = $data->name;
         $user->email    = $data->email;
