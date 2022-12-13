@@ -18,9 +18,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('name')->unique();
             $table->string('slug')->unique();
+            $table->string('vinyl_file')->unique()->nullable();
             $table->string('download_code')->unique()->nullable();
+            $table->integer('download_code_count')->nullable()->default(3);
             $table->timestamps();
-            $table->timestamp('expired_at')->nullable()->default(null);
         });
     }
 

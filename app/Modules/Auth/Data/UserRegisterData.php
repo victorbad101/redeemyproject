@@ -9,6 +9,12 @@ use Spatie\LaravelData\Data;
 
 class UserRegisterData extends Data
 {
+    /**
+     * @param string $name
+     * @param string $email
+     * @param string $password
+     * @param bool|null $isAuthor
+     */
     public function __construct(
         public string $name,
         public string $email,
@@ -17,6 +23,10 @@ class UserRegisterData extends Data
     ) {
     }
 
+    /**
+     * @param UserRegisterRequest $request
+     * @return static
+     */
     public static function fromRequest(UserRegisterRequest $request): static
     {
         return new self(

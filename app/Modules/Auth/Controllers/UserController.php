@@ -15,16 +15,28 @@ use Illuminate\View\View;
 
 class UserController extends Controller
 {
+    /**
+     * @param UserRegisterService $registerService
+     */
     public function __construct(
         private UserRegisterService $registerService,
     ) {
     }
 
+    /**
+     * @return View
+     */
     public function create(): View
     {
         return View('session.create');
     }
 
+    /**
+     * @param User $user
+     * @param UserRegisterData $data
+     * @param UserRegisterRequest $request
+     * @return RedirectResponse
+     */
     public function store(User $user, UserRegisterData $data, UserRegisterRequest $request): RedirectResponse
     {
         try {

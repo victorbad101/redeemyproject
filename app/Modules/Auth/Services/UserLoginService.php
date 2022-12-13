@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Modules\Auth\Services;
@@ -19,7 +20,7 @@ class UserLoginService
     {
         $collection = $data::fromRequest($request)->toArray();
 
-        if (! auth()->attempt($collection)) {
+        if (!auth()->attempt($collection)) {
             throw ValidationException::withMessages(['Your provided credentials could not be verified']);
         }
 

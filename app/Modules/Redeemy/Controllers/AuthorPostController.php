@@ -14,16 +14,28 @@ use Illuminate\View\View;
 
 class AuthorPostController extends Controller
 {
+    /**
+     * @param VinylRegisterService $registerService
+     */
     public function __construct(
         private VinylRegisterService $registerService,
     ) {
     }
 
+    /**
+     * @return View
+     */
     public function create(): View
     {
         return View('vinyl.create');
     }
 
+    /**
+     * @param Vinyl $vinyl
+     * @param VinylData $data
+     * @param VinylRequest $request
+     * @return RedirectResponse
+     */
     public function store(Vinyl $vinyl, VinylData $data, VinylRequest $request): RedirectResponse
     {
         $this->registerService->register($vinyl, $data, $request);

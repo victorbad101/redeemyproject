@@ -4,6 +4,7 @@ namespace App\Modules\Redeemy\Models;
 
 use App\Modules\Auth\Models\User;
 use App\Modules\Redeemy\Data\VinylData;
+use App\Modules\Redeemy\Requests\VinylRequest;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,15 +15,17 @@ class Vinyl extends Model
 
     /**
      * @param VinylData $data
+     * @param VinylRequest $request
      * @return Vinyl
      */
-    public static function register(VinylData $data): Vinyl
+    public static function register(VinylData $data, VinylRequest $request): Vinyl
     {
         $vinyl = new Vinyl();
 
         $vinyl->user_id       = auth()->user()->id;
         $vinyl->name          = $data->name;
         $vinyl->slug          = strtolower(str_replace(' ', '-', $vinyl->name));
+        $vinyl->vinyl_file     = $request->file('file')->store('public');
         $vinyl->download_code = null;
 
         $vinyl->save();

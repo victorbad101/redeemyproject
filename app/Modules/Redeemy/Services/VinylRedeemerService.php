@@ -16,11 +16,10 @@ class VinylRedeemerService
     public function beforeRedeem($id): Vinyl
     {
         $vinyl = Vinyl::find($id);
-        $start = Carbon::parse($vinyl->updated_at);
 
         if (! isset($vinyl->download_code)) {
             $vinyl->download_code = $this->downloadCode(6);
-            $vinyl->expired_at = $start->addSeconds(10);
+            $vinyl->download_code_count = 3;
             $vinyl->save();
         }
 

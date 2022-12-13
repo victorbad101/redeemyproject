@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Auth;
 
 class VinylController extends Controller
 {
+    /**
+     * @return View
+     */
     public function index(): View
     {
         return View('vinyl.index', [

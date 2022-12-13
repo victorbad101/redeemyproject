@@ -10,9 +10,9 @@
 </head>
 
 <body>
-@error('field-name')
-<div class="alert alert-danger">{{ $message }}</div>
-@enderror
+@if($errors->any())
+    {{ implode('', $errors->all(':message')) }}
+@endif
 {{ $slot }}
 </body>
 

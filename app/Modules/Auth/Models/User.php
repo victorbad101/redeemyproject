@@ -2,7 +2,6 @@
 
 namespace App\Modules\Auth\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Modules\Auth\Data\UserRegisterData;
 use App\Modules\Redeemy\Models\Vinyl;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,8 +13,6 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens;
-    use HasFactory;
     use Notifiable;
 
     /**
@@ -45,7 +42,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Used In @class CheckIfAuthor
+     * Used In @class App\Http\Middleware\CheckIfAuthor
      * @return User|null
      */
     public function isAdmin(): User|null
@@ -58,8 +55,9 @@ class User extends Authenticatable
                 ->where('is_admin', true)
                 ->first();
         } else {
-            return User::where('id', auth()->id())->where('is_admin', true)->first();
+            return User::where('id', auth()->id())
+                       ->where('is_admin', true)
+                       ->first();
         }
-
     }
 }
