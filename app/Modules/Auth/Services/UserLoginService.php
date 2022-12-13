@@ -11,14 +11,13 @@ use Illuminate\Validation\ValidationException;
 class UserLoginService
 {
     /**
-     * @param UserLoginData $data
      * @param UserLoginRequest $request
      * @return void
      * @throws ValidationException
      */
-    public function login(UserLoginData $data, UserLoginRequest $request): void
+    public function login(UserLoginRequest $request): void
     {
-        $collection = $data::fromRequest($request)->toArray();
+        $collection = UserLoginData::fromRequest($request)->toArray();
 
         if (!auth()->attempt($collection)) {
             throw ValidationException::withMessages(['Your provided credentials could not be verified']);

@@ -35,10 +35,10 @@ class LogInController extends Controller
      * @param UserLoginRequest $request
      * @return RedirectResponse
      */
-    public function store(UserLoginData $data, UserLoginRequest $request): RedirectResponse
+    public function store(UserLoginRequest $request): RedirectResponse
     {
         try {
-            $this->loginService->login($data, $request);
+            $this->loginService->login($request);
         } catch (ValidationException $exception) {
             echo $exception->getMessage();
         }
