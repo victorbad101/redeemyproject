@@ -36,9 +36,9 @@ class AuthorPostController extends Controller
      * @param VinylRequest $request
      * @return RedirectResponse
      */
-    public function store(Vinyl $vinyl, VinylData $data, VinylRequest $request): RedirectResponse
+    public function store(VinylRequest $request): RedirectResponse
     {
-        $this->registerService->register($vinyl, $data, $request);
+        $this->registerService->register($request);
 
         return redirect('/dashboard');
     }

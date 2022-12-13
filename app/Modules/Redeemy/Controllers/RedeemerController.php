@@ -45,15 +45,14 @@ class RedeemerController extends Controller
 
     /**
      * @param $id
-     * @param CodeRedeemerData $data
      * @param CodeRedeemerRequest $request
      * @return RedirectResponse
      */
-    public function removeCode($id, CodeRedeemerData $data, CodeRedeemerRequest $request)
+    public function removeCode($id, CodeRedeemerRequest $request)
     {
         $vinyl = Vinyl::find($id);
 
-        if ($data::fromRequest($request)->downloadCode == $vinyl->download_code && $vinyl->download_code_count) {
+        if (CodeRedeemerData::fromRequest($request)->downloadCode == $vinyl->download_code && $vinyl->download_code_count) {
             $vinyl->download_code_count--;
             $vinyl->save();
             return back();

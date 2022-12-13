@@ -40,7 +40,7 @@ class UserController extends Controller
     public function store(User $user, UserRegisterData $data, UserRegisterRequest $request): RedirectResponse
     {
         try {
-            $authUser = $this->registerService->register($user, $data, $request);
+            $authUser = $this->registerService->register($request);
             auth()->login($authUser);
 
             session()->regenerate();

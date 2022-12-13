@@ -11,13 +11,11 @@ use App\Modules\Auth\Requests\UserRegisterRequest;
 class UserRegisterService
 {
     /**
-     * @param User $user
-     * @param UserRegisterData $data
      * @param UserRegisterRequest $request
      * @return User
      */
-    public function register(User $user, UserRegisterData $data, UserRegisterRequest $request): User
+    public function register(UserRegisterRequest $request): User
     {
-        return $user::register($data::fromRequest($request));
+        return User::register(UserRegisterData::fromRequest($request));
     }
 }
