@@ -31,7 +31,6 @@ class LogInController extends Controller
     }
 
     /**
-     * @param UserLoginData $data
      * @param UserLoginRequest $request
      * @return RedirectResponse
      */
